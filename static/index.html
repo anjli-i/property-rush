@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Property Rush</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">Python + WebSockets prototype</p>
+        <h1>Property Rush</h1>
+        <p class="subtitle">A fuller multiplayer property-trading prototype inspired by Monopoly. Open the same room in multiple browser tabs to play together, buy railroads and utilities, and watch out for jail.</p>
+      </div>
+      <form id="join-form" class="join-card">
+        <label>
+          <span>Name</span>
+          <input id="name" maxlength="18" placeholder="Player name" required>
+        </label>
+        <label>
+          <span>Room</span>
+          <input id="room" maxlength="18" value="demo" required>
+        </label>
+        <button type="submit">Join Game</button>
+      </form>
+    </section>
+
+    <section class="game-grid">
+      <div class="stack">
+        <article class="panel status-panel">
+          <div class="panel-head">
+            <h2>Status</h2>
+            <span id="connection-pill" class="pill offline">Offline</span>
+          </div>
+          <p id="room-label">Room: not joined</p>
+          <p id="turn-label">Turn: waiting</p>
+          <p id="message-label">Message: Connect to begin.</p>
+          <p id="winner-label" class="winner"></p>
+          <div class="actions">
+            <button id="roll-btn" disabled>Roll Dice</button>
+            <button id="buy-btn" disabled>Buy Space</button>
+            <button id="end-btn" disabled>End Turn</button>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head">
+            <h2>Players</h2>
+            <span id="roll-label" class="pill">No roll yet</span>
+          </div>
+          <div id="players" class="players"></div>
+        </article>
+      </div>
+
+      <article class="panel board-panel">
+        <div class="panel-head">
+          <h2>Board</h2>
+          <span class="pill">40 spaces</span>
+        </div>
+        <div id="board" class="board"></div>
+      </article>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
