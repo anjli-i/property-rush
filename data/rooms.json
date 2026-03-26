@@ -1,0 +1,109 @@
+{
+  "demo": {
+    "room_id": "demo",
+    "players": [
+      {
+        "id": "955f922c-1293-42df-bdbb-3977c01ec50e",
+        "name": "anj",
+        "money": 1400,
+        "position": 6,
+        "properties": [
+          6
+        ],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": true
+      },
+      {
+        "id": "05a116c7-130c-496b-898c-d36fbb2d3e02",
+        "name": "anj 2",
+        "money": 1500,
+        "position": 0,
+        "properties": [],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": false
+      },
+      {
+        "id": "8a3485ce-3827-4ccd-9be1-7e52e4746f01",
+        "name": "anj",
+        "money": 1500,
+        "position": 0,
+        "properties": [],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": false
+      },
+      {
+        "id": "c5b82331-9bc0-4a3e-a733-085cf6544217",
+        "name": "anj 2",
+        "money": 1500,
+        "position": 0,
+        "properties": [],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": false
+      },
+      {
+        "id": "bb26fb7f-c58b-4103-b0dc-03f3ba921968",
+        "name": "anj",
+        "money": 1500,
+        "position": 0,
+        "properties": [],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": false
+      },
+      {
+        "id": "a733f958-bb9c-455c-958c-64916a1c4020",
+        "name": "1",
+        "money": 1500,
+        "position": 0,
+        "properties": [],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": false
+      }
+    ],
+    "property_owner": {
+      "6": "955f922c-1293-42df-bdbb-3977c01ec50e"
+    },
+    "property_houses": {
+      "6": 0
+    },
+    "turn_order": [
+      "955f922c-1293-42df-bdbb-3977c01ec50e",
+      "05a116c7-130c-496b-898c-d36fbb2d3e02",
+      "8a3485ce-3827-4ccd-9be1-7e52e4746f01",
+      "c5b82331-9bc0-4a3e-a733-085cf6544217",
+      "bb26fb7f-c58b-4103-b0dc-03f3ba921968",
+      "a733f958-bb9c-455c-958c-64916a1c4020"
+    ],
+    "current_turn_index": 0,
+    "started": true,
+    "last_roll": [
+      3,
+      3
+    ],
+    "last_roll_total": 6,
+    "last_message": "1 disconnected.",
+    "log": [
+      "anj disconnected.",
+      "anj 2 disconnected.",
+      "anj joined room demo.",
+      "anj 2 joined room demo.",
+      "anj disconnected.",
+      "anj joined room demo.",
+      "anj disconnected.",
+      "anj 2 disconnected.",
+      "anj joined room demo.",
+      "anj disconnected.",
+      "1 joined room demo.",
+      "1 disconnected.",
+      "1 joined room demo.",
+      "1 disconnected."
+    ],
+    "highlighted_space": 6,
+    "trade_offer": null
+  }
+}

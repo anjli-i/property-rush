@@ -1,13 +1,14 @@
 # Property Rush
 
-Property Rush is a lightweight multiplayer property-trading prototype built with Python, FastAPI, and WebSockets. It is inspired by Monopoly, but sized to stay easy to extend while still feeling recognizably like the real board game.
+Property Rush is a multiplayer Monopoly-style web game built with Python, FastAPI, and WebSockets. It now includes a stronger visual system, richer game feedback, persistent room state, property upgrades, and live player-to-player trading.
 
 ## What it does
 
 - Multiple players can join the same room from different browser tabs or devices.
 - The server owns the game state and enforces turns.
-- Players can roll once per turn, buy unowned properties, railroads, and utilities, pay rent, draw cards, visit jail, and go bankrupt.
-- The UI updates live for everyone in the room.
+- Players can claim properties, railroads, and utilities, pay dynamic rent, build houses and hotels, sell property back to the bank, and trade with other players.
+- Live game logs, leaderboards, highlighted landings, and property detail modals update for everyone in the room.
+- Room state is saved to disk so local restarts do not immediately wipe active games.
 
 ## Tech stack
 
@@ -50,20 +51,23 @@ Notes:
 2. Join the same room name from each tab.
 3. The game starts automatically when the second player joins.
 4. On your turn, click `Roll Dice`.
-5. If you land on an unowned property, railroad, or utility and have enough cash, click `Buy Space`.
-6. Click `End Turn` to pass control to the next player.
+5. If you land on an unowned property, railroad, or utility and have enough cash, click `Claim Property`.
+6. Open property cards or board tiles to inspect details, build houses, or sell back to the bank.
+7. Use the trade desk during your turn to offer property and cash deals to another player.
+8. Click `End Turn` to pass control to the next player.
 
 ## Current simplifications
 
 - 40 spaces based on the classic Monopoly board
-- No auctions, houses, hotels, trading, or save/load yet
+- Houses and hotels are simplified into direct upgrades on owned monopolies
 - Jail is simplified: you lose one turn and then leave
-- Chance and Community Chest are simplified to a smaller card set
-- Bankruptcy immediately releases owned properties back to the bank
+- Chance and Community Chest use a smaller curated card set
+- Property sales go back to the bank at half value
+- AI opponents and long-term account-based persistence are not included yet
 
 ## Good next steps
 
-- Add trading between players
-- Add house and hotel upgrades
-- Persist rooms in a database so games survive restarts
+- Add auctions and mortgages
+- Add smarter upgrade balancing and even-building rules
+- Persist rooms in a database so games survive deploys, not just local restarts
 - Add reconnection by player token and game lobby screens

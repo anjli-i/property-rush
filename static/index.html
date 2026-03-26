@@ -1,68 +1,155 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Property Rush</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <main class="page">
-    <section class="hero">
+  <div class="shell">
+    <header class="navbar glass-card">
       <div>
-        <p class="eyebrow">Python + WebSockets prototype</p>
+        <p class="eyebrow">Multiplayer strategy board game</p>
         <h1>Property Rush</h1>
-        <p class="subtitle">A fuller multiplayer property-trading prototype inspired by Monopoly. Open the same room in multiple browser tabs to play together, buy railroads and utilities, and watch out for jail.</p>
       </div>
-      <form id="join-form" class="join-card">
-        <label>
-          <span>Name</span>
-          <input id="name" maxlength="18" placeholder="Player name" required>
-        </label>
-        <label>
-          <span>Room</span>
-          <input id="room" maxlength="18" value="demo" required>
-        </label>
-        <button type="submit">Join Game</button>
-      </form>
-    </section>
+      <div class="navbar-meta">
+        <span id="connection-pill" class="status-pill offline">Offline</span>
+        <span id="turn-banner" class="turn-banner">Waiting for players</span>
+      </div>
+    </header>
 
-    <section class="game-grid">
-      <div class="stack">
-        <article class="panel status-panel">
-          <div class="panel-head">
-            <h2>Status</h2>
-            <span id="connection-pill" class="pill offline">Offline</span>
+    <main class="layout">
+      <section class="left-rail">
+        <article class="glass-card join-card">
+          <div class="section-head">
+            <h2>Join A Room</h2>
+            <span class="chip">Live</span>
           </div>
-          <p id="room-label">Room: not joined</p>
-          <p id="turn-label">Turn: waiting</p>
-          <p id="message-label">Message: Connect to begin.</p>
-          <p id="winner-label" class="winner"></p>
-          <div class="actions">
-            <button id="roll-btn" disabled>Roll Dice</button>
-            <button id="buy-btn" disabled>Buy Space</button>
-            <button id="end-btn" disabled>End Turn</button>
+          <form id="join-form" class="join-form">
+            <label>
+              <span>Name</span>
+              <input id="name" maxlength="18" placeholder="Player name" required>
+            </label>
+            <label>
+              <span>Room</span>
+              <input id="room" maxlength="18" value="demo" required>
+            </label>
+            <button type="submit" class="primary-btn">Enter Table</button>
+          </form>
+          <div class="meta-list">
+            <p id="room-label">Room: not joined</p>
+            <p id="message-label">Message: Connect to begin.</p>
           </div>
         </article>
 
-        <article class="panel">
-          <div class="panel-head">
-            <h2>Players</h2>
-            <span id="roll-label" class="pill">No roll yet</span>
+        <article class="glass-card action-card">
+          <div class="section-head">
+            <h2>Action Panel</h2>
+            <span id="roll-label" class="chip">No roll yet</span>
           </div>
-          <div id="players" class="players"></div>
+          <div class="action-buttons">
+            <button id="roll-btn" class="primary-btn" disabled>Roll Dice</button>
+            <button id="buy-btn" class="secondary-btn" disabled>Claim Property</button>
+            <button id="end-btn" class="secondary-btn" disabled>End Turn</button>
+          </div>
+          <p id="winner-label" class="winner-copy"></p>
         </article>
-      </div>
 
-      <article class="panel board-panel">
-        <div class="panel-head">
-          <h2>Board</h2>
-          <span class="pill">40 spaces</span>
+        <article class="glass-card trade-card">
+          <div class="section-head">
+            <h2>Trade Desk</h2>
+            <span class="chip">Negotiate</span>
+          </div>
+          <form id="trade-form" class="trade-form">
+            <label>
+              <span>Target player</span>
+              <select id="trade-target"></select>
+            </label>
+            <label>
+              <span>Offer property</span>
+              <select id="trade-offer-property"></select>
+            </label>
+            <label>
+              <span>Request property</span>
+              <select id="trade-request-property"></select>
+            </label>
+            <div class="trade-money-grid">
+              <label>
+                <span>Your cash</span>
+                <input id="trade-offer-money" type="number" min="0" value="0">
+              </label>
+              <label>
+                <span>Their cash</span>
+                <input id="trade-request-money" type="number" min="0" value="0">
+              </label>
+            </div>
+            <button id="trade-submit" type="submit" class="primary-btn" disabled>Send Trade</button>
+          </form>
+          <div id="trade-offer-box" class="trade-offer-box hidden"></div>
+        </article>
+      </section>
+
+      <section class="center-stage">
+        <article class="glass-card board-card">
+          <div class="section-head">
+            <h2>Game Board</h2>
+            <span class="chip">40 spaces</span>
+          </div>
+          <div id="board" class="board-grid"></div>
+        </article>
+
+        <div class="bottom-grid">
+          <article class="glass-card properties-card">
+            <div class="section-head">
+              <h2>Estate Portfolio</h2>
+              <span class="chip">Inspect & Upgrade</span>
+            </div>
+            <div id="property-cards" class="property-grid"></div>
+          </article>
+
+          <article class="glass-card log-card">
+            <div class="section-head">
+              <h2>Game Log</h2>
+              <span class="chip">Recent actions</span>
+            </div>
+            <div id="game-log" class="game-log"></div>
+          </article>
         </div>
-        <div id="board" class="board"></div>
-      </article>
-    </section>
-  </main>
+      </section>
+
+      <section class="right-rail">
+        <article class="glass-card players-card">
+          <div class="section-head">
+            <h2>Players</h2>
+            <span class="chip">Table view</span>
+          </div>
+          <div id="players" class="players-list"></div>
+        </article>
+
+        <article class="glass-card leaderboard-card">
+          <div class="section-head">
+            <h2>Leaderboard</h2>
+            <span class="chip">Assets</span>
+          </div>
+          <div id="leaderboard" class="leaderboard"></div>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="property-modal" class="property-modal">
+    <div id="property-modal-body"></div>
+    <div class="modal-actions">
+      <button id="build-btn" class="primary-btn" disabled>Build House</button>
+      <button id="sell-btn" class="secondary-btn" disabled>Sell To Bank</button>
+      <button id="close-modal-btn" class="ghost-btn">Close</button>
+    </div>
+  </dialog>
+
   <script src="/static/app.js"></script>
 </body>
 </html>
