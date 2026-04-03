@@ -1,5 +1,6 @@
 # Property Rush
 
+https://property-rush.onrender.com/
 Property Rush is a multiplayer Monopoly-style web game built with Python, FastAPI, and WebSockets. It now includes a stronger visual system, richer game feedback, persistent room state, property upgrades, and live player-to-player trading.
 
 ## What it does
