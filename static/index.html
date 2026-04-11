@@ -6,148 +6,169 @@
   <title>Property Rush</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-  <div class="shell">
-    <header class="navbar glass-card">
-      <div>
-        <p class="eyebrow">Multiplayer strategy board game</p>
-        <h1>Property Rush</h1>
+  <div class="app">
+    <header class="top-bar glass-card">
+      <div class="brand">
+        <span class="brand-mark">PR</span>
+        <div>
+          <p class="brand-title">Property Rush</p>
+          <p class="brand-tag">Online board · inspired by classics</p>
+        </div>
       </div>
-      <div class="navbar-meta">
+      <div class="top-bar-center">
+        <div id="dice-display" class="dice-display" aria-hidden="true">
+          <span class="die" id="die-one">—</span>
+          <span class="die" id="die-two">—</span>
+        </div>
+        <p id="turn-banner" class="turn-line">Waiting for players</p>
+      </div>
+      <div class="top-bar-actions">
         <span id="connection-pill" class="status-pill offline">Offline</span>
-        <span id="turn-banner" class="turn-banner">Waiting for players</span>
+        <button type="button" id="open-trade-btn" class="icon-text-btn" disabled title="Propose a trade">
+          <span class="btn-icon" aria-hidden="true">⇄</span> Trade
+        </button>
+        <button type="button" id="copy-room-btn" class="icon-text-btn" disabled title="Copy room link">
+          <span class="btn-icon" aria-hidden="true">⎘</span> Copy link
+        </button>
       </div>
     </header>
 
-    <main class="layout">
-      <section class="left-rail">
-        <article class="glass-card join-card">
-          <div class="section-head">
-            <h2>Join A Room</h2>
-            <span class="chip">Live</span>
-          </div>
-          <form id="join-form" class="join-form">
-            <label>
-              <span>Name</span>
-              <input id="name" maxlength="18" placeholder="Player name" required>
-            </label>
-            <label>
-              <span>Room</span>
-              <input id="room" maxlength="18" value="demo" required>
-            </label>
-            <button type="submit" class="primary-btn">Enter Table</button>
-          </form>
-          <div class="meta-list">
-            <p id="room-label">Room: not joined</p>
-            <p id="message-label">Message: Connect to begin.</p>
-          </div>
-        </article>
-
-        <article class="glass-card action-card">
-          <div class="section-head">
-            <h2>Action Panel</h2>
-            <span id="roll-label" class="chip">No roll yet</span>
-          </div>
-          <div class="action-buttons">
-            <button id="roll-btn" class="primary-btn" disabled>Roll Dice</button>
-            <button id="buy-btn" class="secondary-btn" disabled>Claim Property</button>
-            <button id="end-btn" class="secondary-btn" disabled>End Turn</button>
-          </div>
-          <p id="winner-label" class="winner-copy"></p>
-        </article>
-
-        <article class="glass-card trade-card">
-          <div class="section-head">
-            <h2>Trade Desk</h2>
-            <span class="chip">Negotiate</span>
-          </div>
-          <form id="trade-form" class="trade-form">
-            <label>
-              <span>Target player</span>
-              <select id="trade-target"></select>
-            </label>
-            <label>
-              <span>Offer property</span>
-              <select id="trade-offer-property"></select>
-            </label>
-            <label>
-              <span>Request property</span>
-              <select id="trade-request-property"></select>
-            </label>
-            <div class="trade-money-grid">
-              <label>
-                <span>Your cash</span>
-                <input id="trade-offer-money" type="number" min="0" value="0">
-              </label>
-              <label>
-                <span>Their cash</span>
-                <input id="trade-request-money" type="number" min="0" value="0">
-              </label>
+    <main class="game-shell">
+      <aside class="column column-left glass-card">
+        <div class="tablist" role="tablist" aria-label="Left panel">
+          <button type="button" class="tab" role="tab" aria-selected="false" data-tab="table" id="tab-table">Table</button>
+          <button type="button" class="tab active" role="tab" aria-selected="true" data-tab="setup" id="tab-setup">Lobby</button>
+        </div>
+        <div class="column-body">
+          <div class="tab-panel" id="panel-table" role="tabpanel" aria-labelledby="tab-table" hidden>
+            <div class="panel-block">
+              <div class="section-head compact">
+                <h2>Actions</h2>
+                <span id="roll-label" class="chip">No roll yet</span>
+              </div>
+              <div class="action-buttons">
+                <button id="roll-btn" class="primary-btn" disabled>Roll dice</button>
+                <button id="buy-btn" class="secondary-btn" disabled>Claim property</button>
+                <button id="end-btn" class="secondary-btn" disabled>End turn</button>
+              </div>
+              <p id="winner-label" class="winner-copy"></p>
             </div>
-            <button id="trade-submit" type="submit" class="primary-btn" disabled>Send Trade</button>
-          </form>
-          <div id="trade-offer-box" class="trade-offer-box hidden"></div>
-        </article>
-      </section>
+            <div class="panel-block muted-block">
+              <p id="room-label" class="meta-line">Room: not joined</p>
+              <p id="message-label" class="meta-line">Connect to begin.</p>
+            </div>
+          </div>
+          <div class="tab-panel active" id="panel-setup" role="tabpanel" aria-labelledby="tab-setup">
+            <form id="join-form" class="join-form">
+              <label>
+                <span>Your name</span>
+                <input id="name" maxlength="18" placeholder="Player name" required autocomplete="nickname">
+              </label>
+              <label>
+                <span>Room code</span>
+                <input id="room" maxlength="18" value="demo" required autocomplete="off">
+              </label>
+              <button type="submit" class="primary-btn">Enter room</button>
+            </form>
+            <p class="hint">Friends open the same room code to play together.</p>
+          </div>
+        </div>
+      </aside>
 
-      <section class="center-stage">
-        <article class="glass-card board-card">
-          <div class="section-head">
-            <h2>Game Board</h2>
+      <section class="column column-center">
+        <article class="glass-card board-wrap">
+          <div class="section-head compact board-head">
+            <h2>Board</h2>
             <span class="chip">40 spaces</span>
           </div>
-          <div id="board" class="board-grid"></div>
+          <div class="board-scroll">
+            <div id="board" class="board-grid"></div>
+          </div>
         </article>
-
-        <div class="bottom-grid">
-          <article class="glass-card properties-card">
-            <div class="section-head">
-              <h2>Estate Portfolio</h2>
-              <span class="chip">Inspect & Upgrade</span>
+        <div class="glass-card sub-panel">
+          <div class="tablist tablist-inline" role="tablist" aria-label="Board details">
+            <button type="button" class="tab active" role="tab" aria-selected="true" data-subtab="portfolio" id="subtab-portfolio">Portfolio</button>
+            <button type="button" class="tab" role="tab" aria-selected="false" data-subtab="log" id="subtab-log">Game log</button>
+          </div>
+          <div class="sub-panel-body">
+            <div class="sub-panel-pane active" id="pane-portfolio" role="tabpanel">
+              <div id="property-cards" class="property-grid"></div>
             </div>
-            <div id="property-cards" class="property-grid"></div>
-          </article>
-
-          <article class="glass-card log-card">
-            <div class="section-head">
-              <h2>Game Log</h2>
-              <span class="chip">Recent actions</span>
+            <div class="sub-panel-pane" id="pane-log" role="tabpanel" hidden>
+              <div id="game-log" class="game-log"></div>
             </div>
-            <div id="game-log" class="game-log"></div>
-          </article>
+          </div>
         </div>
       </section>
 
-      <section class="right-rail">
-        <article class="glass-card players-card">
-          <div class="section-head">
-            <h2>Players</h2>
-            <span class="chip">Table view</span>
+      <aside class="column column-right glass-card">
+        <div class="tablist" role="tablist" aria-label="Players and ranks">
+          <button type="button" class="tab active" role="tab" aria-selected="true" data-rtab="players" id="rtab-players">Players</button>
+          <button type="button" class="tab" role="tab" aria-selected="false" data-rtab="ranks" id="rtab-ranks">Leaderboard</button>
+        </div>
+        <div class="column-body scroll-y">
+          <div class="tab-panel active" id="rpanel-players" role="tabpanel">
+            <div id="players" class="players-list"></div>
           </div>
-          <div id="players" class="players-list"></div>
-        </article>
-
-        <article class="glass-card leaderboard-card">
-          <div class="section-head">
-            <h2>Leaderboard</h2>
-            <span class="chip">Assets</span>
+          <div class="tab-panel" id="rpanel-ranks" role="tabpanel" hidden>
+            <div id="leaderboard" class="leaderboard"></div>
           </div>
-          <div id="leaderboard" class="leaderboard"></div>
-        </article>
-      </section>
+        </div>
+      </aside>
     </main>
   </div>
 
   <dialog id="property-modal" class="property-modal">
     <div id="property-modal-body"></div>
     <div class="modal-actions">
-      <button id="build-btn" class="primary-btn" disabled>Build House</button>
-      <button id="sell-btn" class="secondary-btn" disabled>Sell To Bank</button>
+      <button id="build-btn" class="primary-btn" disabled>Build house</button>
+      <button id="sell-btn" class="secondary-btn" disabled>Sell to bank</button>
       <button id="close-modal-btn" class="ghost-btn">Close</button>
     </div>
+  </dialog>
+
+  <dialog id="trade-modal" class="trade-modal">
+    <div class="modal-header">
+      <h2>Propose a trade</h2>
+      <button type="button" id="close-trade-modal" class="ghost-btn modal-close" aria-label="Close">×</button>
+    </div>
+    <p class="modal-lead">Swap cash and deeds with another player. Several trades can be open at once; each person answers their own inbox.</p>
+    <div id="trade-pending-root" class="trade-pending-root"></div>
+    <form id="trade-form" class="trade-form">
+      <label>
+        <span>Trade with</span>
+        <select id="trade-target"></select>
+      </label>
+      <div class="trade-columns">
+        <div class="trade-side">
+          <h3 class="trade-side-title">You give</h3>
+          <label>
+            <span>Property</span>
+            <select id="trade-offer-property"></select>
+          </label>
+          <label>
+            <span>Cash</span>
+            <input id="trade-offer-money" type="number" min="0" value="0">
+          </label>
+        </div>
+        <div class="trade-side">
+          <h3 class="trade-side-title">You receive</h3>
+          <label>
+            <span>Property</span>
+            <select id="trade-request-property"></select>
+          </label>
+          <label>
+            <span>Their cash</span>
+            <input id="trade-request-money" type="number" min="0" value="0">
+          </label>
+        </div>
+      </div>
+      <button id="trade-submit" type="submit" class="primary-btn full-width" disabled>Send offer</button>
+    </form>
   </dialog>
 
   <script src="/static/app.js"></script>

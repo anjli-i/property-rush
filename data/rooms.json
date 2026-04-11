@@ -63,6 +63,46 @@
         "bankrupt": false,
         "in_jail": false,
         "has_rolled": false
+      },
+      {
+        "id": "8b8e0317-e161-4f45-bf0c-999cceb8f76f",
+        "name": "anj",
+        "money": 1500,
+        "position": 0,
+        "properties": [],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": false
+      },
+      {
+        "id": "417418c7-3365-4e50-b07e-1c9d992b9be4",
+        "name": "anj2",
+        "money": 1500,
+        "position": 0,
+        "properties": [],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": false
+      },
+      {
+        "id": "26c961f9-f8cd-4977-9a5f-eb89d62a50ef",
+        "name": "4",
+        "money": 1500,
+        "position": 0,
+        "properties": [],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": false
+      },
+      {
+        "id": "06eb56b2-ce20-4692-ab9d-8938344ad6e5",
+        "name": "4",
+        "money": 1500,
+        "position": 0,
+        "properties": [],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": false
       }
     ],
     "property_owner": {
@@ -77,7 +117,11 @@
       "8a3485ce-3827-4ccd-9be1-7e52e4746f01",
       "c5b82331-9bc0-4a3e-a733-085cf6544217",
       "bb26fb7f-c58b-4103-b0dc-03f3ba921968",
-      "a733f958-bb9c-455c-958c-64916a1c4020"
+      "a733f958-bb9c-455c-958c-64916a1c4020",
+      "8b8e0317-e161-4f45-bf0c-999cceb8f76f",
+      "417418c7-3365-4e50-b07e-1c9d992b9be4",
+      "26c961f9-f8cd-4977-9a5f-eb89d62a50ef",
+      "06eb56b2-ce20-4692-ab9d-8938344ad6e5"
     ],
     "current_turn_index": 0,
     "started": true,
@@ -86,24 +130,107 @@
       3
     ],
     "last_roll_total": 6,
-    "last_message": "1 disconnected.",
+    "last_message": "4 disconnected.",
     "log": [
-      "anj disconnected.",
-      "anj 2 disconnected.",
-      "anj joined room demo.",
-      "anj 2 joined room demo.",
-      "anj disconnected.",
-      "anj joined room demo.",
-      "anj disconnected.",
-      "anj 2 disconnected.",
-      "anj joined room demo.",
-      "anj disconnected.",
-      "1 joined room demo.",
       "1 disconnected.",
-      "1 joined room demo.",
-      "1 disconnected."
+      "anj joined room demo.",
+      "anj2 joined room demo.",
+      "anj2 proposed a trade to anj.",
+      "anj disconnected.",
+      "4 joined room demo.",
+      "anj2 disconnected.",
+      "4 disconnected.",
+      "anj5 joined room demo.",
+      "anj5 proposed a trade to 4.",
+      "4 joined room demo.",
+      "Trade offers need money or a property on at least one side.",
+      "4 proposed a trade to 4.",
+      "4 disconnected."
     ],
     "highlighted_space": 6,
-    "trade_offer": null
+    "trade_offers": {
+      "e85a4ea4-eecb-4a96-ac1d-f47615dc0145": {
+        "id": "e85a4ea4-eecb-4a96-ac1d-f47615dc0145",
+        "from_player_id": "417418c7-3365-4e50-b07e-1c9d992b9be4",
+        "to_player_id": "955f922c-1293-42df-bdbb-3977c01ec50e",
+        "offer_property": null,
+        "request_property": null,
+        "offer_money": 10,
+        "request_money": 0
+      },
+      "cd66d0c7-aeae-483f-9ede-43fa5a3b8a10": {
+        "id": "cd66d0c7-aeae-483f-9ede-43fa5a3b8a10",
+        "from_player_id": "06eb56b2-ce20-4692-ab9d-8938344ad6e5",
+        "to_player_id": "26c961f9-f8cd-4977-9a5f-eb89d62a50ef",
+        "offer_property": null,
+        "request_property": null,
+        "offer_money": 100,
+        "request_money": 0
+      }
+    }
+  },
+  "demo1": {
+    "room_id": "demo1",
+    "players": [
+      {
+        "id": "7f7199f5-4aee-4c70-94c0-2c10756b0c72",
+        "name": "1",
+        "money": 1700,
+        "position": 6,
+        "properties": [
+          11
+        ],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": false
+      },
+      {
+        "id": "06eb56b2-ce20-4692-ab9d-8938344ad6e5",
+        "name": "2",
+        "money": 1060,
+        "position": 11,
+        "properties": [
+          6
+        ],
+        "bankrupt": false,
+        "in_jail": false,
+        "has_rolled": true
+      }
+    ],
+    "property_owner": {
+      "6": "06eb56b2-ce20-4692-ab9d-8938344ad6e5",
+      "11": "7f7199f5-4aee-4c70-94c0-2c10756b0c72"
+    },
+    "property_houses": {
+      "6": 0,
+      "11": 0
+    },
+    "turn_order": [
+      "7f7199f5-4aee-4c70-94c0-2c10756b0c72",
+      "06eb56b2-ce20-4692-ab9d-8938344ad6e5"
+    ],
+    "current_turn_index": 0,
+    "started": true,
+    "last_roll": null,
+    "last_roll_total": 0,
+    "last_message": "2 accepted a trade from 1.",
+    "log": [
+      "2 joined room demo1.",
+      "Game started. 1 goes first.",
+      "1 rolled 3 + 3. 1 landed on Seoul. Claim it for 100.",
+      "1 claimed Seoul for 100.",
+      "2 disconnected.",
+      "2 joined room demo1.",
+      "2's turn.",
+      "2 rolled 5 + 6. 2 landed on Barcelona. Claim it for 140.",
+      "2 claimed Barcelona for 140.",
+      "1's turn.",
+      "2 proposed a trade to 1.",
+      "1 accepted a trade from 2.",
+      "1 proposed a trade to 2.",
+      "2 accepted a trade from 1."
+    ],
+    "highlighted_space": null,
+    "trade_offers": {}
   }
 }

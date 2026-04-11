@@ -10,46 +10,46 @@ from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 
 BOARD = [
-    {"name": "Go", "type": "go"},
-    {"name": "Mediterranean Avenue", "type": "property", "price": 60, "mortgage": 30, "house_cost": 50, "color": "brown", "rents": [2, 10, 30, 90, 160, 250]},
-    {"name": "Community Chest", "type": "chest"},
-    {"name": "Baltic Avenue", "type": "property", "price": 60, "mortgage": 30, "house_cost": 50, "color": "brown", "rents": [4, 20, 60, 180, 320, 450]},
+    {"name": "Start", "type": "go"},
+    {"name": "Cairo", "type": "property", "price": 60, "mortgage": 30, "house_cost": 50, "color": "brown", "rents": [2, 10, 30, 90, 160, 250]},
+    {"name": "Community Fund", "type": "chest"},
+    {"name": "Istanbul", "type": "property", "price": 60, "mortgage": 30, "house_cost": 50, "color": "brown", "rents": [4, 20, 60, 180, 320, 450]},
     {"name": "Income Tax", "type": "tax", "amount": 200},
-    {"name": "Reading Railroad", "type": "railroad", "price": 200, "mortgage": 100},
-    {"name": "Oriental Avenue", "type": "property", "price": 100, "mortgage": 50, "house_cost": 50, "color": "light-blue", "rents": [6, 30, 90, 270, 400, 550]},
-    {"name": "Chance", "type": "chance"},
-    {"name": "Vermont Avenue", "type": "property", "price": 100, "mortgage": 50, "house_cost": 50, "color": "light-blue", "rents": [6, 30, 90, 270, 400, 550]},
-    {"name": "Connecticut Avenue", "type": "property", "price": 120, "mortgage": 60, "house_cost": 50, "color": "light-blue", "rents": [8, 40, 100, 300, 450, 600]},
-    {"name": "Jail / Just Visiting", "type": "jail"},
-    {"name": "St. Charles Place", "type": "property", "price": 140, "mortgage": 70, "house_cost": 100, "color": "pink", "rents": [10, 50, 150, 450, 625, 750]},
-    {"name": "Electric Company", "type": "utility", "price": 150, "mortgage": 75},
-    {"name": "States Avenue", "type": "property", "price": 140, "mortgage": 70, "house_cost": 100, "color": "pink", "rents": [10, 50, 150, 450, 625, 750]},
-    {"name": "Virginia Avenue", "type": "property", "price": 160, "mortgage": 80, "house_cost": 100, "color": "pink", "rents": [12, 60, 180, 500, 700, 900]},
-    {"name": "Pennsylvania Railroad", "type": "railroad", "price": 200, "mortgage": 100},
-    {"name": "St. James Place", "type": "property", "price": 180, "mortgage": 90, "house_cost": 100, "color": "orange", "rents": [14, 70, 200, 550, 750, 950]},
-    {"name": "Community Chest", "type": "chest"},
-    {"name": "Tennessee Avenue", "type": "property", "price": 180, "mortgage": 90, "house_cost": 100, "color": "orange", "rents": [14, 70, 200, 550, 750, 950]},
-    {"name": "New York Avenue", "type": "property", "price": 200, "mortgage": 100, "house_cost": 100, "color": "orange", "rents": [16, 80, 220, 600, 800, 1000]},
+    {"name": "Tokyo Station", "type": "railroad", "price": 200, "mortgage": 100},
+    {"name": "Seoul", "type": "property", "price": 100, "mortgage": 50, "house_cost": 50, "color": "light-blue", "rents": [6, 30, 90, 270, 400, 550]},
+    {"name": "Lucky Draw", "type": "chance"},
+    {"name": "Singapore", "type": "property", "price": 100, "mortgage": 50, "house_cost": 50, "color": "light-blue", "rents": [6, 30, 90, 270, 400, 550]},
+    {"name": "Bangkok", "type": "property", "price": 120, "mortgage": 60, "house_cost": 50, "color": "light-blue", "rents": [8, 40, 100, 300, 450, 600]},
+    {"name": "Detention / Visitor", "type": "jail"},
+    {"name": "Barcelona", "type": "property", "price": 140, "mortgage": 70, "house_cost": 100, "color": "pink", "rents": [10, 50, 150, 450, 625, 750]},
+    {"name": "Power Grid", "type": "utility", "price": 150, "mortgage": 75},
+    {"name": "Milan", "type": "property", "price": 140, "mortgage": 70, "house_cost": 100, "color": "pink", "rents": [10, 50, 150, 450, 625, 750]},
+    {"name": "Amsterdam", "type": "property", "price": 160, "mortgage": 80, "house_cost": 100, "color": "pink", "rents": [12, 60, 180, 500, 700, 900]},
+    {"name": "Paris Gare", "type": "railroad", "price": 200, "mortgage": 100},
+    {"name": "Berlin", "type": "property", "price": 180, "mortgage": 90, "house_cost": 100, "color": "orange", "rents": [14, 70, 200, 550, 750, 950]},
+    {"name": "Community Fund", "type": "chest"},
+    {"name": "Vienna", "type": "property", "price": 180, "mortgage": 90, "house_cost": 100, "color": "orange", "rents": [14, 70, 200, 550, 750, 950]},
+    {"name": "Paris", "type": "property", "price": 200, "mortgage": 100, "house_cost": 100, "color": "orange", "rents": [16, 80, 220, 600, 800, 1000]},
     {"name": "Free Parking", "type": "parking"},
-    {"name": "Kentucky Avenue", "type": "property", "price": 220, "mortgage": 110, "house_cost": 150, "color": "red", "rents": [18, 90, 250, 700, 875, 1050]},
-    {"name": "Chance", "type": "chance"},
-    {"name": "Indiana Avenue", "type": "property", "price": 220, "mortgage": 110, "house_cost": 150, "color": "red", "rents": [18, 90, 250, 700, 875, 1050]},
-    {"name": "Illinois Avenue", "type": "property", "price": 240, "mortgage": 120, "house_cost": 150, "color": "red", "rents": [20, 100, 300, 750, 925, 1100]},
-    {"name": "B. & O. Railroad", "type": "railroad", "price": 200, "mortgage": 100},
-    {"name": "Atlantic Avenue", "type": "property", "price": 260, "mortgage": 130, "house_cost": 150, "color": "yellow", "rents": [22, 110, 330, 800, 975, 1150]},
-    {"name": "Ventnor Avenue", "type": "property", "price": 260, "mortgage": 130, "house_cost": 150, "color": "yellow", "rents": [22, 110, 330, 800, 975, 1150]},
+    {"name": "Tokyo", "type": "property", "price": 220, "mortgage": 110, "house_cost": 150, "color": "red", "rents": [18, 90, 250, 700, 875, 1050]},
+    {"name": "Lucky Draw", "type": "chance"},
+    {"name": "Sydney", "type": "property", "price": 220, "mortgage": 110, "house_cost": 150, "color": "red", "rents": [18, 90, 250, 700, 875, 1050]},
+    {"name": "Toronto", "type": "property", "price": 240, "mortgage": 120, "house_cost": 150, "color": "red", "rents": [20, 100, 300, 750, 925, 1100]},
+    {"name": "London Terminal", "type": "railroad", "price": 200, "mortgage": 100},
+    {"name": "Dubai", "type": "property", "price": 260, "mortgage": 130, "house_cost": 150, "color": "yellow", "rents": [22, 110, 330, 800, 975, 1150]},
+    {"name": "Mumbai", "type": "property", "price": 260, "mortgage": 130, "house_cost": 150, "color": "yellow", "rents": [22, 110, 330, 800, 975, 1150]},
     {"name": "Water Works", "type": "utility", "price": 150, "mortgage": 75},
-    {"name": "Marvin Gardens", "type": "property", "price": 280, "mortgage": 140, "house_cost": 150, "color": "yellow", "rents": [24, 120, 360, 850, 1025, 1200]},
-    {"name": "Go To Jail", "type": "go_to_jail"},
-    {"name": "Pacific Avenue", "type": "property", "price": 300, "mortgage": 150, "house_cost": 200, "color": "green", "rents": [26, 130, 390, 900, 1100, 1275]},
-    {"name": "North Carolina Avenue", "type": "property", "price": 300, "mortgage": 150, "house_cost": 200, "color": "green", "rents": [26, 130, 390, 900, 1100, 1275]},
-    {"name": "Community Chest", "type": "chest"},
-    {"name": "Pennsylvania Avenue", "type": "property", "price": 320, "mortgage": 160, "house_cost": 200, "color": "green", "rents": [28, 150, 450, 1000, 1200, 1400]},
-    {"name": "Short Line", "type": "railroad", "price": 200, "mortgage": 100},
-    {"name": "Chance", "type": "chance"},
-    {"name": "Park Place", "type": "property", "price": 350, "mortgage": 175, "house_cost": 200, "color": "dark-blue", "rents": [35, 175, 500, 1100, 1300, 1500]},
+    {"name": "Rio de Janeiro", "type": "property", "price": 280, "mortgage": 140, "house_cost": 150, "color": "yellow", "rents": [24, 120, 360, 850, 1025, 1200]},
+    {"name": "Go To Detention", "type": "go_to_jail"},
+    {"name": "London", "type": "property", "price": 300, "mortgage": 150, "house_cost": 200, "color": "green", "rents": [26, 130, 390, 900, 1100, 1275]},
+    {"name": "Los Angeles", "type": "property", "price": 300, "mortgage": 150, "house_cost": 200, "color": "green", "rents": [26, 130, 390, 900, 1100, 1275]},
+    {"name": "Community Fund", "type": "chest"},
+    {"name": "Chicago", "type": "property", "price": 320, "mortgage": 160, "house_cost": 200, "color": "green", "rents": [28, 150, 450, 1000, 1200, 1400]},
+    {"name": "NYC Grand Central", "type": "railroad", "price": 200, "mortgage": 100},
+    {"name": "Lucky Draw", "type": "chance"},
+    {"name": "Hong Kong", "type": "property", "price": 350, "mortgage": 175, "house_cost": 200, "color": "dark-blue", "rents": [35, 175, 500, 1100, 1300, 1500]},
     {"name": "Luxury Tax", "type": "tax", "amount": 100},
-    {"name": "Boardwalk", "type": "property", "price": 400, "mortgage": 200, "house_cost": 200, "color": "dark-blue", "rents": [50, 200, 600, 1400, 1700, 2000]},
+    {"name": "New York", "type": "property", "price": 400, "mortgage": 200, "house_cost": 200, "color": "dark-blue", "rents": [50, 200, 600, 1400, 1700, 2000]},
 ]
 
 GO_MONEY = 200
@@ -69,17 +69,17 @@ PROPERTY_GROUPS = {
 }
 
 CHANCE_CARDS = [
-    {"text": "Advance to Go", "move_to": 0},
-    {"text": "Advance to Illinois Avenue", "move_to": 24},
-    {"text": "Go to St. Charles Place", "move_to": 11},
-    {"text": "Take a trip to Reading Railroad", "move_to": 5},
+    {"text": "Advance to Start", "move_to": 0},
+    {"text": "Fly to Toronto", "move_to": 24},
+    {"text": "Visit Barcelona", "move_to": 11},
+    {"text": "Express to Tokyo Station", "move_to": 5},
     {"text": "Bank pays you dividend of 50", "money": 50},
     {"text": "Pay poor tax of 15", "money": -15},
-    {"text": "Go to Jail", "go_to_jail": True},
+    {"text": "Go to Detention", "go_to_jail": True},
 ]
 
 COMMUNITY_CARDS = [
-    {"text": "Advance to Go", "move_to": 0},
+    {"text": "Advance to Start", "move_to": 0},
     {"text": "Bank error in your favor. Collect 200", "money": 200},
     {"text": "Doctor's fees. Pay 50", "money": -50},
     {"text": "From sale of stock you get 50", "money": 50},
@@ -132,7 +132,7 @@ class GameRoom:
     def __init__(self, room_id: str):
         self.room_id = room_id
         self.players: dict[str, Player] = {}
-        self.connections: dict[str, WebSocket] = {}
+        self.player_sockets: dict[str, list[WebSocket]] = {}
         self.property_owner: dict[int, str] = {}
         self.property_houses: dict[int, int] = {}
         self.turn_order: list[str] = []
@@ -143,7 +143,7 @@ class GameRoom:
         self.last_message = "Waiting for at least 2 players."
         self.log: list[str] = ["Welcome to Property Rush."]
         self.highlighted_space: int | None = None
-        self.trade_offer: TradeOffer | None = None
+        self.trade_offers: dict[str, TradeOffer] = {}
 
     @classmethod
     def from_snapshot(cls, data: dict[str, Any]) -> "GameRoom":
@@ -173,8 +173,12 @@ class GameRoom:
         room.last_message = data.get("last_message", room.last_message)
         room.log = list(data.get("log", room.log))
         room.highlighted_space = data.get("highlighted_space")
-        if data.get("trade_offer"):
-            room.trade_offer = TradeOffer(**data["trade_offer"])
+        raw_offers = data.get("trade_offers")
+        if isinstance(raw_offers, dict) and raw_offers:
+            room.trade_offers = {oid: TradeOffer(**off) for oid, off in raw_offers.items()}
+        elif data.get("trade_offer"):
+            legacy = TradeOffer(**data["trade_offer"])
+            room.trade_offers[legacy.id] = legacy
         return room
 
     def snapshot(self) -> dict[str, Any]:
@@ -203,7 +207,7 @@ class GameRoom:
             "last_message": self.last_message,
             "log": self.log,
             "highlighted_space": self.highlighted_space,
-            "trade_offer": asdict(self.trade_offer) if self.trade_offer else None,
+            "trade_offers": {oid: asdict(o) for oid, o in self.trade_offers.items()},
         }
 
     def add_log(self, message: str) -> None:
@@ -220,16 +224,24 @@ class GameRoom:
             player = Player(id=player_id, name=name)
             self.players[player_id] = player
             self.turn_order.append(player_id)
-        self.connections[player_id] = websocket
+        self.player_sockets.setdefault(player_id, []).append(websocket)
         self.add_log(f"{player.name} joined room {self.room_id}.")
         return player
 
-    def remove_player(self, player_id: str) -> None:
-        self.connections.pop(player_id, None)
-        player = self.players.get(player_id)
-        if player:
-            player.connected = False
-            self.add_log(f"{player.name} disconnected.")
+    def remove_socket(self, player_id: str, websocket: WebSocket) -> None:
+        sockets = self.player_sockets.get(player_id)
+        if not sockets:
+            return
+        try:
+            sockets.remove(websocket)
+        except ValueError:
+            return
+        if not sockets:
+            self.player_sockets.pop(player_id, None)
+            player = self.players.get(player_id)
+            if player:
+                player.connected = False
+                self.add_log(f"{player.name} disconnected.")
 
     @property
     def current_player(self) -> Player | None:
@@ -353,10 +365,7 @@ class GameRoom:
             )
         return sorted(ranked, key=lambda item: item["assets"], reverse=True)
 
-    def trade_state(self) -> dict[str, Any] | None:
-        if not self.trade_offer:
-            return None
-        offer = self.trade_offer
+    def _serialize_trade_offer(self, offer: TradeOffer) -> dict[str, Any]:
         return {
             "id": offer.id,
             "fromPlayerId": offer.from_player_id,
@@ -370,6 +379,9 @@ class GameRoom:
             "offerMoney": offer.offer_money,
             "requestMoney": offer.request_money,
         }
+
+    def trade_offers_payload(self) -> list[dict[str, Any]]:
+        return [self._serialize_trade_offer(o) for o in self.trade_offers.values()]
 
     def state(self, player_id: str | None = None) -> dict[str, Any]:
         current = self.current_player
@@ -392,7 +404,7 @@ class GameRoom:
             "you": player_id,
             "winner": self.winner_name(),
             "canBuy": self.can_buy_current_space(me),
-            "tradeOffer": self.trade_state(),
+            "tradeOffers": self.trade_offers_payload(),
             "leaderboard": self.leaderboard(),
         }
 
@@ -408,7 +420,6 @@ class GameRoom:
         self.last_roll = None
         self.last_roll_total = 0
         self.highlighted_space = None
-        self.trade_offer = None
         self.add_log(f"{self.current_player.name}'s turn.")
 
     def send_to_jail(self, player: Player) -> None:
@@ -443,7 +454,6 @@ class GameRoom:
             return
 
         player.has_rolled = True
-        self.trade_offer = None
 
         if player.in_jail:
             player.in_jail = False
@@ -607,11 +617,27 @@ class GameRoom:
         player.properties = [item for item in player.properties if item != property_index]
         self.property_owner.pop(property_index, None)
         self.property_houses.pop(property_index, None)
+        self._cancel_trades_listing_property(player.id, property_index)
         self.add_log(f"{player.name} sold {space['name']} back to the bank for {sale_value}.")
 
+    def _cancel_trades_listing_property(self, owner_id: str, property_index: int) -> None:
+        remove_ids = [
+            oid
+            for oid, o in self.trade_offers.items()
+            if (o.offer_property == property_index and o.from_player_id == owner_id)
+            or (o.request_property == property_index and o.to_player_id == owner_id)
+        ]
+        for oid in remove_ids:
+            del self.trade_offers[oid]
+
     def handle_trade_offer(self, player_id: str, payload: dict[str, Any]) -> None:
-        if self.current_player is None or self.current_player.id != player_id:
-            self.add_log("Only the active player can start a trade.")
+        self.ensure_started()
+        if not self.started:
+            self.add_log("Need at least two players and a started game to trade.")
+            return
+        trader = self.players.get(player_id)
+        if trader is None or trader.bankrupt:
+            self.add_log("You cannot trade right now.")
             return
         to_player_id = str(payload.get("toPlayerId") or "")
         offer_property = payload.get("offerProperty")
@@ -633,21 +659,41 @@ class GameRoom:
         if offer_property is None and request_property is None and offer_money == 0 and request_money == 0:
             self.add_log("Trade offers need money or a property on at least one side.")
             return
-        self.trade_offer = TradeOffer(
+
+        offer_prop_int = int(offer_property) if offer_property is not None else None
+        if offer_prop_int is not None:
+            for existing in self.trade_offers.values():
+                if existing.from_player_id == player_id and existing.offer_property == offer_prop_int:
+                    self.add_log("That property is already part of another offer you sent.")
+                    return
+
+        stale_ids = [
+            oid
+            for oid, o in self.trade_offers.items()
+            if o.from_player_id == player_id and o.to_player_id == to_player_id
+        ]
+        for oid in stale_ids:
+            del self.trade_offers[oid]
+
+        new_offer = TradeOffer(
             id=str(uuid4()),
             from_player_id=player_id,
             to_player_id=to_player_id,
-            offer_property=int(offer_property) if offer_property is not None else None,
+            offer_property=offer_prop_int,
             request_property=int(request_property) if request_property is not None else None,
             offer_money=offer_money,
             request_money=request_money,
         )
+        self.trade_offers[new_offer.id] = new_offer
         self.add_log(f"{self.players[player_id].name} proposed a trade to {self.players[to_player_id].name}.")
 
-    def handle_trade_response(self, player_id: str, accept: bool) -> None:
-        offer = self.trade_offer
+    def handle_trade_response(self, player_id: str, offer_id: str, accept: bool) -> None:
+        if not offer_id:
+            self.add_log("No trade was selected.")
+            return
+        offer = self.trade_offers.get(offer_id)
         if not offer:
-            self.add_log("There is no trade to respond to.")
+            self.add_log("That trade offer is no longer active.")
             return
         if offer.to_player_id != player_id:
             self.add_log("That trade is not addressed to you.")
@@ -655,19 +701,19 @@ class GameRoom:
         from_player = self.players[offer.from_player_id]
         to_player = self.players[offer.to_player_id]
         if not accept:
-            self.trade_offer = None
-            self.add_log(f"{to_player.name} rejected the trade offer.")
+            del self.trade_offers[offer_id]
+            self.add_log(f"{to_player.name} declined a trade from {from_player.name}.")
             return
         if offer.offer_money > from_player.money or offer.request_money > to_player.money:
-            self.trade_offer = None
+            del self.trade_offers[offer_id]
             self.add_log("The trade failed because one player no longer has enough cash.")
             return
         if offer.offer_property is not None and self.property_owner.get(offer.offer_property) != from_player.id:
-            self.trade_offer = None
+            del self.trade_offers[offer_id]
             self.add_log("The trade failed because the offered property changed hands.")
             return
         if offer.request_property is not None and self.property_owner.get(offer.request_property) != to_player.id:
-            self.trade_offer = None
+            del self.trade_offers[offer_id]
             self.add_log("The trade failed because the requested property changed hands.")
             return
 
@@ -681,8 +727,8 @@ class GameRoom:
         if offer.request_property is not None:
             self.transfer_property(offer.request_property, to_player.id, from_player.id)
 
-        self.trade_offer = None
-        self.add_log(f"{to_player.name} accepted the trade offer from {from_player.name}.")
+        del self.trade_offers[offer_id]
+        self.add_log(f"{to_player.name} accepted a trade from {from_player.name}.")
         self.check_bankruptcy(from_player)
         self.check_bankruptcy(to_player)
 
@@ -711,19 +757,23 @@ class GameRoom:
             self.property_owner.pop(position, None)
             self.property_houses.pop(position, None)
         player.properties.clear()
-        if self.trade_offer and (self.trade_offer.from_player_id == player.id or self.trade_offer.to_player_id == player.id):
-            self.trade_offer = None
+        self.trade_offers = {
+            oid: o
+            for oid, o in self.trade_offers.items()
+            if o.from_player_id != player.id and o.to_player_id != player.id
+        }
         self.add_log(f"{player.name} has gone bankrupt.")
 
     async def broadcast_state(self) -> None:
-        stale: list[str] = []
-        for pid, websocket in self.connections.items():
-            try:
-                await websocket.send_text(json.dumps(self.state(pid)))
-            except Exception:
-                stale.append(pid)
-        for pid in stale:
-            self.remove_player(pid)
+        stale: list[tuple[str, WebSocket]] = []
+        for pid, sockets in list(self.player_sockets.items()):
+            for ws in list(sockets):
+                try:
+                    await ws.send_text(json.dumps(self.state(pid)))
+                except Exception:
+                    stale.append((pid, ws))
+        for pid, ws in stale:
+            self.remove_socket(pid, ws)
 
 
 def load_rooms() -> dict[str, GameRoom]:
@@ -789,7 +839,11 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
             elif action == "trade_offer":
                 room.handle_trade_offer(player_id, payload)
             elif action == "trade_response":
-                room.handle_trade_response(player_id, bool(payload.get("accept")))
+                room.handle_trade_response(
+                    player_id,
+                    str(payload.get("offerId") or ""),
+                    bool(payload.get("accept")),
+                )
             elif action == "end_turn":
                 room.handle_end_turn(player_id)
             else:
@@ -800,6 +854,6 @@ async def websocket_endpoint(websocket: WebSocket) -> None:
             await room.broadcast_state()
     except WebSocketDisconnect:
         if room and player_id:
-            room.remove_player(player_id)
+            room.remove_socket(player_id, websocket)
             save_rooms(rooms)
             await room.broadcast_state()
